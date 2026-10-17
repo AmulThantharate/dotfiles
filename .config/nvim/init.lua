@@ -20,28 +20,31 @@ if not vim.lsp.enable then
 end
 
 if not vim.iter then
-  vim.iter = function(t)
-    local items = t or {}
+  local function make_iter(items)
     local M = {}
     function M:filter(fn)
       local res = {}
       for _, v in pairs(items) do
         if fn(v) then table.insert(res, v) end
       end
-      return vim.iter(res)
+      return make_iter(res)
     end
     function M:map(fn)
       local res = {}
       for _, v in pairs(items) do
         table.insert(res, fn(v))
       end
-      return vim.iter(res)
+      return make_iter(res)
+    end
+    function M:flatten()
+      return make_iter(vim.tbl_flatten(items))
     end
     function M:totable()
       return items
     end
     return setmetatable(M, { __index = items })
   end
+  vim.iter = make_iter
 end
 
 require("config.options")
