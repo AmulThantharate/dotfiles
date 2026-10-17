@@ -186,6 +186,8 @@ return {
         "json",
         "bash",
         "python",
+        "javascript",
+        "typescript",
         "groovy",
         "markdown",
         "markdown_inline",

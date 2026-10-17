@@ -48,30 +48,15 @@ return {
       require("catppuccin").setup(opts)
       vim.cmd.colorscheme("catppuccin-mocha")
 
-      -- Enforce 100% transparent backgrounds across all UI elements
+      -- Enforce 100% transparent backgrounds for window layout elements
       local function make_transparent()
         local transparent_groups = {
           "Normal",
           "NormalNC",
-          "Comment",
-          "Constant",
-          "Special",
-          "Identifier",
-          "Statement",
-          "PreProc",
-          "Type",
-          "Underlined",
-          "Todo",
-          "String",
-          "Function",
-          "Conditional",
-          "Repeat",
-          "Operator",
-          "Structure",
-          "LineNr",
-          "NonText",
           "SignColumn",
+          "LineNr",
           "CursorLineNr",
+          "FoldColumn",
           "EndOfBuffer",
           "NormalFloat",
           "FloatBorder",
