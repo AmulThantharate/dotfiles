@@ -44,7 +44,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     commit = "d5b6d4366dfd7a1071b930defd365e6d0be258de",
-    event = { "BufReadPre", "BufNewFile" },
+    lazy = false,
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -234,6 +234,7 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
+      "supermaven-inc/supermaven-nvim",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -292,6 +293,52 @@ return {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
+        formatting = {
+          fields = { "abbr", "kind", "menu" },
+          format = function(entry, vim_item)
+            local icons = {
+              Supermaven = " ",
+              Text = "󰉿",
+              Method = "󰆧",
+              Function = "󰊕",
+              Constructor = "",
+              Field = "󰜢",
+              Variable = "󰀫",
+              Class = "󰠱",
+              Interface = "",
+              Module = "",
+              Property = "󰜢",
+              Unit = "󰑭",
+              Value = "󰎠",
+              Enum = "",
+              Keyword = "󰌋",
+              Snippet = "",
+              Color = "󰏘",
+              File = "󰈙",
+              Reference = "󰈇",
+              Folder = "󰉋",
+              EnumMember = "",
+              Constant = "󰏿",
+              Struct = "󰙅",
+              Event = "",
+              Operator = "󰆕",
+              TypeParameter = "󰅲",
+            }
+            if entry.source.name == "supermaven" then
+              vim_item.kind = " [AI]"
+            elseif icons[vim_item.kind] then
+              vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
+            end
+            vim_item.menu = ({
+              supermaven = "[AI]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[Snippet]",
+              buffer = "[Buffer]",
+              path = "[Path]",
+            })[entry.source.name]
+            return vim_item
+          end,
+        },
         mapping = cmp.mapping.preset.insert({
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -299,10 +346,21 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
           ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
+            local sm_ok, suggestion = pcall(require, "supermaven-nvim.completion_preview")
+            if sm_ok and suggestion.has_suggestion() then
+              suggestion.on_accept_suggestion()
+            elseif cmp.visible() then
               cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<C-a>"] = cmp.mapping(function(fallback)
+            local sm_ok, suggestion = pcall(require, "supermaven-nvim.completion_preview")
+            if sm_ok and suggestion.has_suggestion() then
+              suggestion.on_accept_suggestion()
             else
               fallback()
             end
@@ -318,9 +376,10 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
+          { name = "supermaven", priority = 1100 },
           { name = "nvim_lsp", priority = 1000 },
           { name = "luasnip", priority = 750 },
-          { name = "buffer", priority = 500, keyword_length = 1 },
+          { name = "buffer", priority = 500, keyword_length = 2 },
           { name = "path", priority = 250 },
         }),
       })

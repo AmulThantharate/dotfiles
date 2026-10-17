@@ -76,6 +76,10 @@ return {
         for _, group in ipairs(transparent_groups) do
           vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
         end
+
+        -- AI Autocomplete highlights
+        vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#89b4fa", bold = true })
+        vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#89b4fa", italic = true })
       end
 
       make_transparent()
