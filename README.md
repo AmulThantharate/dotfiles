@@ -42,6 +42,7 @@
 | Keybinding | Action | Mode |
 | :--- | :--- | :--- |
 | `Ctrl + S` | Save current file | Normal, Insert, Visual |
+| `Ctrl + N` | Create a new blank file / buffer | Normal, Insert |
 | `Ctrl + P` | Quick Open / Search Files | Normal |
 | `Ctrl + Shift + P` | Command Palette | Normal |
 | `Ctrl + B` | Toggle File Explorer Sidebar (`NvimTree`) | Normal |

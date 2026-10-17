@@ -8,6 +8,9 @@ local opts = { noremap = true, silent = true }
 -- File Save (Ctrl+s)
 map({ "n", "i", "v" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
+-- New Blank File (Ctrl+n)
+map({ "n", "i" }, "<C-n>", "<esc><cmd>enew<cr>", { desc = "VS Code: New File" })
+
 -- Quick Open / Find Files (Ctrl+p)
 map("n", "<C-p>", function()
   require("telescope.builtin").find_files({ hidden = true, no_ignore = false })
