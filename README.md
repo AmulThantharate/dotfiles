@@ -16,6 +16,7 @@
 - 🌌 **True 100% Transparent Background**: Configured with **Catppuccin Mocha** (plus Tokyo Night & Sonokai options) and an automated highlight transparency enforcer for buffers, file tree, Telescope, and floating windows.
 - ⌨️ **VS Code Muscle Memory**: Use standard `Ctrl+S`, `Ctrl+N`, `Ctrl+P`, `Ctrl+B`, `Ctrl+Shift+F`, `Ctrl+/`, `Alt+Up/Down`, `Ctrl+Tab`, `Ctrl+W`, `Ctrl+~` and more.
 - 🚀 **Full Cloud DevOps Stack**: Out-of-the-box LSP, autocompletion, schema validation, linting, and formatting for Infrastructure as Code, Containers, CI/CD, and Cloud scripts.
+- 🤖 **AI Code Autocomplete**: Real-time AI completions powered by **Supermaven** (free tier enabled out of the box, press `<Tab>` to accept AI code predictions across Groovy, Python, Terraform, Docker, etc.) + Copilot support.
 - 🗂️ **JazzyGrim Architecture**: Clean, modular structure (`lua/config` and `lua/plugins`) with fast lazy-loading powered by `lazy.nvim`.
 - 🪟 **Modern UI**: Floating filename badges with filetype icons (`b0o/incline.nvim`), VS Code editor tabs (`bufferline.nvim`), floating terminal (`toggleterm.nvim`), and Git terminal GUI (`lazygit.nvim`).
 

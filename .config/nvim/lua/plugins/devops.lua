@@ -161,6 +161,12 @@ return {
         capabilities = capabilities,
         on_attach = on_attach,
         filetypes = { "groovy" },
+        root_dir = function(fname)
+          local util = require("lspconfig.util")
+          return util.root_pattern("Jenkinsfile", ".git", "build.gradle", "pom.xml")(fname)
+            or vim.fs.dirname(fname)
+        end,
+        single_file_support = true,
       })
     end,
   },
