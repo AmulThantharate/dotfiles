@@ -1,5 +1,5 @@
 return {
-  -- Supermaven: Ultra-fast AI Autocomplete for all languages
+  -- Supermaven: Ultra-fast AI Autocomplete for all languages (Free tier out-of-the-box)
   {
     "supermaven-inc/supermaven-nvim",
     event = "InsertEnter",
@@ -17,19 +17,6 @@ return {
       log_level = "info",
       disable_inline_completion = false,
       disable_keymaps = false,
-    },
-  },
-
-  -- GitHub Copilot (Alternative: if you have a GitHub Copilot subscription, run :Copilot auth)
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = {
-      suggestion = {
-        enabled = false, -- Handled or toggleable
-      },
-      panel = { enabled = false },
     },
   },
 }
