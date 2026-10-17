@@ -20,6 +20,7 @@ opt.relativenumber = true
 opt.pumheight = 10
 opt.pumblend = 0
 opt.winblend = 0
+opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Tabs & Indentation (DevOps Standard: 2 spaces)
 opt.tabstop = 2

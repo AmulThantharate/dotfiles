@@ -1,14 +1,51 @@
 return {
-  -- Sonokai: Andromeda style with transparent background (JazzyGrim primary theme)
+  -- Catppuccin Mocha: Velvet, Modern & Stunning Transparent Theme
   {
-    "sainnhe/sonokai",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
     priority = 1000,
-    config = function()
-      vim.g.sonokai_transparent_background = "1"
-      vim.g.sonokai_enable_italic = "1"
-      vim.g.sonokai_style = "andromeda"
-      vim.cmd.colorscheme("sonokai")
+    opts = {
+      flavour = "mocha",
+      transparent_background = true,
+      term_colors = true,
+      styles = {
+        comments = { "italic" },
+        conditionals = { "italic" },
+        loops = { "italic" },
+        functions = { "bold" },
+        keywords = { "italic" },
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = { "bold" },
+        properties = {},
+        types = { "italic" },
+        operators = {},
+      },
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        which_key = true,
+        telescope = { enabled = true },
+        bufferline = true,
+        mason = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme("catppuccin-mocha")
 
       -- Enforce 100% transparent backgrounds across all UI elements
       local function make_transparent()
@@ -63,7 +100,7 @@ return {
     end,
   },
 
-  -- Tokyo Night (Alternative Transparent Theme)
+  -- Tokyo Night (Alternative Cyber Transparent Theme)
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -77,14 +114,9 @@ return {
     },
   },
 
-  -- Catppuccin (Alternative Transparent Theme)
+  -- Sonokai (Alternative Retro Theme)
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "sainnhe/sonokai",
     lazy = true,
-    opts = {
-      flavour = "mocha",
-      transparent_background = true,
-    },
   },
 }

@@ -13,8 +13,8 @@
 
 ## ✨ Features
 
-- 🌌 **True 100% Transparent Background**: Configured with `sainnhe/sonokai` (Andromeda style) and an automated highlight transparency enforcer for buffers, file tree, Telescope, and floating windows.
-- ⌨️ **VS Code Muscle Memory**: Use standard `Ctrl+S`, `Ctrl+P`, `Ctrl+B`, `Ctrl+Shift+F`, `Ctrl+/`, `Alt+Up/Down`, `Ctrl+Tab`, `Ctrl+W`, `Ctrl+~` and more.
+- 🌌 **True 100% Transparent Background**: Configured with **Catppuccin Mocha** (plus Tokyo Night & Sonokai options) and an automated highlight transparency enforcer for buffers, file tree, Telescope, and floating windows.
+- ⌨️ **VS Code Muscle Memory**: Use standard `Ctrl+S`, `Ctrl+N`, `Ctrl+P`, `Ctrl+B`, `Ctrl+Shift+F`, `Ctrl+/`, `Alt+Up/Down`, `Ctrl+Tab`, `Ctrl+W`, `Ctrl+~` and more.
 - 🚀 **Full Cloud DevOps Stack**: Out-of-the-box LSP, autocompletion, schema validation, linting, and formatting for Infrastructure as Code, Containers, CI/CD, and Cloud scripts.
 - 🗂️ **JazzyGrim Architecture**: Clean, modular structure (`lua/config` and `lua/plugins`) with fast lazy-loading powered by `lazy.nvim`.
 - 🪟 **Modern UI**: Floating filename badges with filetype icons (`b0o/incline.nvim`), VS Code editor tabs (`bufferline.nvim`), floating terminal (`toggleterm.nvim`), and Git terminal GUI (`lazygit.nvim`).
@@ -29,7 +29,7 @@
 | **Containers & Orchestration** | Dockerfile, Containerfile, Docker Compose | `dockerls`, `docker_compose_language_service` |
 | **Kubernetes & Cloud Native** | Kubernetes Manifests, Helm Templates | `yamlls` (with SchemaStore Kubernetes schemas) |
 | **Configuration Management** | Ansible Playbooks, Roles, Tasks, Inventories | `ansiblels`, `yamlls` |
-| **CI / CD Pipelines** | Jenkinsfile, GitHub Actions, GitLab CI | `groovy` syntax, `yamlls` (Actions schema) |
+| **CI / CD Pipelines** | Jenkinsfile, Groovy Pipelines, GitHub Actions | `groovyls` LSP, Jenkins/Groovy snippets, `yamlls` |
 | **Automation Scripting** | Python, Bash / Shell (Zsh, Sh) | `pyright`, `black`, `bashls`, `shfmt`, `shellcheck` |
 | **Data & Configuration** | YAML, JSON, TOML | `yamlls`, `jsonls`, `prettier` |
 | **Databases** | PostgreSQL, MySQL, SQLite | `vim-dadbod-ui` interactive SQL client |

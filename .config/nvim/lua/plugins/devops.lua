@@ -33,6 +33,7 @@ return {
         "bashls",
         "pyright",
         "jsonls",
+        "groovyls",
         "lua_ls",
       },
       automatic_installation = true,
@@ -150,6 +151,17 @@ return {
           },
         },
       })
+
+      -- 10. Groovy & Jenkins Pipelines
+      local groovy_bin = vim.fn.expand("~/.local/share/nvim/mason/bin/groovy-language-server")
+      local groovyls_cmd = vim.fn.executable(groovy_bin) == 1 and { groovy_bin } or nil
+
+      lspconfig.groovyls.setup({
+        cmd = groovyls_cmd,
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "groovy" },
+      })
     end,
   },
 
@@ -231,6 +243,31 @@ return {
       local luasnip = require("luasnip")
       require("luasnip.loaders.from_vscode").lazy_load()
 
+      -- Custom Groovy & Jenkinsfile Snippets
+      local s = luasnip.snippet
+      local t = luasnip.text_node
+      local i = luasnip.insert_node
+      luasnip.add_snippets("groovy", {
+        s("println", { t("println("), i(1, '"Hello World"'), t(")") }),
+        s("def", { t("def "), i(1, "variable"), t(" = "), i(2, '"value"') }),
+        s("pipeline", {
+          t({ "pipeline {", "    agent any", "", "    stages {", "        stage('" }),
+          i(1, "Build"),
+          t({ "') {", "            steps {", "                sh '" }),
+          i(2, "echo building..."),
+          t({ "'", "            }", "        }", "    }", "}" }),
+        }),
+        s("stage", {
+          t("stage('"),
+          i(1, "StageName"),
+          t({ "') {", "    steps {", "        sh '" }),
+          i(2, "echo step"),
+          t({ "'", "    }", "}" }),
+        }),
+        s("sh", { t("sh '"), i(1, "echo hello"), t("'") }),
+        s("shblock", { t({ "sh '''", "    " }), i(1, "echo hello"), t({ "", "'''" }) }),
+      })
+
       -- Autopairs integration
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local autopairs = require("nvim-autopairs")
@@ -273,10 +310,10 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "buffer" },
-          { name = "path" },
+          { name = "nvim_lsp", priority = 1000 },
+          { name = "luasnip", priority = 750 },
+          { name = "buffer", priority = 500, keyword_length = 1 },
+          { name = "path", priority = 250 },
         }),
       })
     end,
