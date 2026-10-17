@@ -3,6 +3,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    tag = "v1.9.0",
     lazy = false,
     priority = 1000,
     opts = {
