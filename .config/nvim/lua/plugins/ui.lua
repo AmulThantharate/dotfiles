@@ -47,6 +47,9 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+    end,
   },
 
   -- Bufferline: VS Code Style Tabs
