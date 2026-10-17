@@ -188,6 +188,7 @@ return {
   -- Code Formatting
   {
     "stevearc/conform.nvim",
+    commit = "192a6d2ddace343f1840a8f72efe2315bd392243",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     opts = {

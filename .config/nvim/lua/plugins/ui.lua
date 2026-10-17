@@ -9,6 +9,7 @@ return {
   -- NvimTree: Fast File Explorer (sidebar)
   {
     "nvim-tree/nvim-tree.lua",
+    commit = "030defdb6522f5f716d8201d20ca1a2baa57ca66",
     cmd = { "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
     opts = {
       disable_netrw = true,
