@@ -33,6 +33,12 @@ return {
         telescope = { enabled = true },
         bufferline = true,
         mason = true,
+        rainbow_delimiters = true,
+        indent_blankline = {
+          enabled = true,
+          scope_color = "mauve",
+          colored_indent_levels = true,
+        },
         native_lsp = {
           enabled = true,
           underlines = {

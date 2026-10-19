@@ -16,7 +16,6 @@ opt.cursorline = true
 opt.signcolumn = "yes"
 opt.showmode = false
 opt.number = true
-opt.relativenumber = true
 opt.pumheight = 10
 opt.pumblend = 0
 opt.winblend = 0
