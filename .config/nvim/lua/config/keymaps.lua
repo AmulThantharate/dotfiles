@@ -77,6 +77,7 @@ map({ "n", "i" }, "<C-a>", "<esc>gg<S-v>G", { desc = "VS Code: Select All" })
 -- Toggle Integrated Terminal (Ctrl+` and Ctrl+~)
 map({ "n", "t" }, "<C-`>", "<cmd>ToggleTerm<cr>", { desc = "VS Code: Toggle Integrated Terminal" })
 map({ "n", "t" }, "<C-~>", "<cmd>ToggleTerm<cr>", { desc = "VS Code: Toggle Integrated Terminal" })
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit Terminal Mode" })
 
 -- Split Editor (Ctrl+\ vertically, Alt+\ horizontally)
 map("n", "<C-\\>", "<cmd>vsplit<cr>", { desc = "VS Code: Split Editor Right" })
