@@ -1,60 +1,24 @@
 return {
-  -- Tokyo Night (Night): Clean, Cyber Dark & Transparent Theme
+  -- Tokyo Night: Dark Theme
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {
       style = "night",
-      transparent = true,
+      transparent = false,
       styles = {
-        sidebars = "transparent",
-        floats = "transparent",
+        sidebars = "dark",
+        floats = "dark",
       },
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)
       vim.cmd.colorscheme("tokyonight-night")
 
-      -- Enforce 100% transparent backgrounds for window layout elements
-      local function make_transparent()
-        local transparent_groups = {
-          "Normal",
-          "NormalNC",
-          "SignColumn",
-          "LineNr",
-          "CursorLineNr",
-          "FoldColumn",
-          "EndOfBuffer",
-          "NormalFloat",
-          "FloatBorder",
-          "NvimTreeNormal",
-          "NvimTreeNormalNC",
-          "NvimTreeEndOfBuffer",
-          "NvimTreeWinSeparator",
-          "TelescopeNormal",
-          "TelescopeBorder",
-          "TelescopePromptNormal",
-          "TelescopePromptBorder",
-          "TelescopeResultsNormal",
-          "TelescopeResultsBorder",
-          "TelescopePreviewNormal",
-          "TelescopePreviewBorder",
-        }
-        for _, group in ipairs(transparent_groups) do
-          vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
-        end
-
-        -- AI Autocomplete highlights (Tokyo Night blue)
-        vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#7aa2f7", bold = true })
-        vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#7aa2f7", italic = true })
-      end
-
-      make_transparent()
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = make_transparent,
-      })
+      -- AI Autocomplete highlights (Tokyo Night blue)
+      vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#7aa2f7", bold = true })
+      vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#7aa2f7", italic = true })
     end,
   },
 
