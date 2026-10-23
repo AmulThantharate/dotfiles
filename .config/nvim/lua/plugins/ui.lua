@@ -108,7 +108,7 @@ return {
             " ",
             { filename, gui = modified and "bold,italic" or "bold" },
             " ",
-            guibg = "#1f2335",
+            guibg = "#1d1c19",
           }
         end,
       })
@@ -195,24 +195,24 @@ return {
 
       local hooks = require("ibl.hooks")
 
-      -- Register highlight setup hook to ensure vibrant colors match Tokyo Night
+      -- Register highlight setup hook to ensure vibrant colors match Kanagawa Dragon
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#f7768e" })
-        vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = "#e0af68" })
-        vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = "#7aa2f7" })
-        vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#ff9e64" })
-        vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { fg = "#9ece6a" })
-        vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { fg = "#bb9af7" })
-        vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = "#7dcfff" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterRed", { fg = "#c4746e" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterYellow", { fg = "#c4b28a" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterBlue", { fg = "#8ba4b0" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterOrange", { fg = "#b6927b" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterGreen", { fg = "#8a9a7b" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterViolet", { fg = "#a292a3" })
+        vim.api.nvim_set_hl(0, "RainbowDelimiterCyan", { fg = "#8ea4a2" })
 
         -- Also define standard Rainbow* aliases
-        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#f7768e" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#e0af68" })
-        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#7aa2f7" })
-        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#ff9e64" })
-        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#9ece6a" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#bb9af7" })
-        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#7dcfff" })
+        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#c4746e" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#c4b28a" })
+        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#8ba4b0" })
+        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#b6927b" })
+        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#8a9a7b" })
+        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#a292a3" })
+        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#8ea4a2" })
       end)
 
       -- Dynamically synchronize the active scope line color with enclosing rainbow delimiter

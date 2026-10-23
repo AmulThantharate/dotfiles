@@ -1,25 +1,44 @@
 return {
-  -- Tokyo Night: Dark Theme
+  -- Kanagawa Dragon: Dark, Earthy & Elegant Theme
   {
-    "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-      style = "night",
+      compile = false,
+      undercurl = true,
+      commentStyle = { italic = true },
+      functionStyle = {},
+      keywordStyle = { italic = true },
+      statementStyle = { bold = true },
+      typeStyle = {},
       transparent = false,
-      styles = {
-        sidebars = "dark",
-        floats = "dark",
+      dimInactive = false,
+      terminalColors = true,
+      theme = "dragon",
+      background = {
+        dark = "dragon",
+        light = "lotus",
       },
     },
     config = function(_, opts)
-      require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight-night")
+      require("kanagawa").setup(opts)
+      vim.cmd.colorscheme("kanagawa-dragon")
 
-      -- AI Autocomplete highlights (Tokyo Night blue)
-      vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#7aa2f7", bold = true })
-      vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#7aa2f7", italic = true })
+      -- AI Autocomplete highlights (Kanagawa Dragon blue)
+      vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#8ba4b0", bold = true })
+      vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#8ba4b0", italic = true })
     end,
+  },
+
+  -- Tokyo Night (Alternative Theme)
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = {
+      style = "night",
+      transparent = false,
+    },
   },
 
   -- Catppuccin Mocha (Alternative Theme)
