@@ -1,11 +1,69 @@
 return {
-  -- Catppuccin Mocha: Velvet, Modern & Stunning Transparent Theme
+  -- Tokyo Night (Night): Clean, Cyber Dark & Transparent Theme
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      style = "night",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+    config = function(_, opts)
+      require("tokyonight").setup(opts)
+      vim.cmd.colorscheme("tokyonight-night")
+
+      -- Enforce 100% transparent backgrounds for window layout elements
+      local function make_transparent()
+        local transparent_groups = {
+          "Normal",
+          "NormalNC",
+          "SignColumn",
+          "LineNr",
+          "CursorLineNr",
+          "FoldColumn",
+          "EndOfBuffer",
+          "NormalFloat",
+          "FloatBorder",
+          "NvimTreeNormal",
+          "NvimTreeNormalNC",
+          "NvimTreeEndOfBuffer",
+          "NvimTreeWinSeparator",
+          "TelescopeNormal",
+          "TelescopeBorder",
+          "TelescopePromptNormal",
+          "TelescopePromptBorder",
+          "TelescopeResultsNormal",
+          "TelescopeResultsBorder",
+          "TelescopePreviewNormal",
+          "TelescopePreviewBorder",
+        }
+        for _, group in ipairs(transparent_groups) do
+          vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
+        end
+
+        -- AI Autocomplete highlights (Tokyo Night blue)
+        vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#7aa2f7", bold = true })
+        vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#7aa2f7", italic = true })
+      end
+
+      make_transparent()
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "*",
+        callback = make_transparent,
+      })
+    end,
+  },
+
+  -- Catppuccin Mocha (Alternative Theme)
   {
     "catppuccin/nvim",
     name = "catppuccin",
     tag = "v1.9.0",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     opts = {
       flavour = "mocha",
       transparent_background = true,
@@ -52,62 +110,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin-mocha")
-
-      -- Enforce 100% transparent backgrounds for window layout elements
-      local function make_transparent()
-        local transparent_groups = {
-          "Normal",
-          "NormalNC",
-          "SignColumn",
-          "LineNr",
-          "CursorLineNr",
-          "FoldColumn",
-          "EndOfBuffer",
-          "NormalFloat",
-          "FloatBorder",
-          "NvimTreeNormal",
-          "NvimTreeNormalNC",
-          "NvimTreeEndOfBuffer",
-          "NvimTreeWinSeparator",
-          "TelescopeNormal",
-          "TelescopeBorder",
-          "TelescopePromptNormal",
-          "TelescopePromptBorder",
-          "TelescopeResultsNormal",
-          "TelescopeResultsBorder",
-          "TelescopePreviewNormal",
-          "TelescopePreviewBorder",
-        }
-        for _, group in ipairs(transparent_groups) do
-          vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
-        end
-
-        -- AI Autocomplete highlights
-        vim.api.nvim_set_hl(0, "CmpItemKindSupermaven", { fg = "#89b4fa", bold = true })
-        vim.api.nvim_set_hl(0, "SupermavenSuggestion", { fg = "#89b4fa", italic = true })
-      end
-
-      make_transparent()
-      vim.api.nvim_create_autocmd("ColorScheme", {
-        pattern = "*",
-        callback = make_transparent,
-      })
     end,
-  },
-
-  -- Tokyo Night (Alternative Cyber Transparent Theme)
-  {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = {
-      style = "night",
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
   },
 
   -- Sonokai (Alternative Retro Theme)
